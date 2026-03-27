@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intake Form → Google Sheets | Evans Counseling | WP Steward</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --wp-dark-blue: #2A4B8F;
+      --wp-accent-blue: #2563eb;
+      --wp-text: #1a1a1a;
+      --wp-text-muted: #4b5563;
+      --wp-white: #ffffff;
+      --wp-border: #e5e7eb;
+      --wp-divider: #9ca3af;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Open Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--wp-text);
+      background: var(--wp-white);
+      line-height: 1.6;
+    }
+    .hero {
+      background: linear-gradient(rgba(42, 75, 143, 0.88), rgba(42, 75, 143, 0.82));
+      color: var(--wp-white);
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+    .hero h1 { margin: 0 0 0.5rem; font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700; }
+    .hero .sub { margin: 0; font-size: 1.25rem; opacity: 0.95; font-weight: 400; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 2.25rem 0; }
+    .section-title { margin: 0 0 0.5rem; text-align: center; font-size: 1.75rem; }
+    .section-tagline {
+      text-align: center;
+      color: var(--wp-text-muted);
+      letter-spacing: 0.06em;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
+    }
+    .section-tagline .accent { color: var(--wp-accent-blue); }
+    .divider {
+      display: block;
+      text-align: center;
+      color: var(--wp-divider);
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      margin-bottom: 1rem;
+      user-select: none;
+    }
+    p { margin: 0 0 1rem; color: var(--wp-text-muted); text-align: center; }
+    .intro p { text-align: left; max-width: none; }
+    .intro p.section-tagline { text-align: center; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 760px);
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      border: 2px solid var(--wp-border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      background: var(--wp-white);
+      position: relative;
+    }
+    .card.recommended {
+      border-color: var(--wp-dark-blue);
+      background: linear-gradient(180deg, rgba(42, 75, 143, 0.04) 0%, var(--wp-white) 100%);
+      box-shadow: 0 4px 20px rgba(42, 75, 143, 0.12);
+    }
+    .card-badge {
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--wp-accent-blue);
+      color: var(--wp-white);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+    }
+    .card-title { margin: 0 0 0.5rem; font-size: 1.25rem; font-weight: 700; }
+    .card-price { margin: 0 0 0.25rem; font-size: 1.75rem; color: var(--wp-dark-blue); font-weight: 700; }
+    .card-price-note { margin: 0 0 1rem; color: var(--wp-text-muted); font-size: 0.85rem; }
+    .card ul { list-style: none; padding: 0; margin: 0 0 1rem; flex-grow: 1; }
+    .card li {
+      padding: 0.35rem 0 0.35rem 1.5rem;
+      position: relative;
+      color: var(--wp-text-muted);
+      font-size: 0.9rem;
+      text-align: left;
+    }
+    .card li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--wp-accent-blue);
+      font-weight: 700;
+    }
+    .card .note {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--wp-border);
+      font-size: 0.85rem;
+      color: var(--wp-text-muted);
+      text-align: left;
+      font-style: italic;
+    }
+    .next-steps {
+      background: var(--wp-text);
+      color: var(--wp-white);
+      padding: 2.5rem 0;
+      margin-top: 1.5rem;
+    }
+    .next-steps .section-title { color: var(--wp-white); }
+    .next-steps p { color: rgba(255, 255, 255, 0.85); text-align: left; }
+    .next-steps ol { color: rgba(255, 255, 255, 0.92); padding-left: 1.25rem; margin: 1rem 0 0; }
+    .next-steps li { margin-bottom: 0.5rem; }
+    .signature { margin-top: 1.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.75); }
+    @media (min-width: 768px) {
+      .card.recommended { transform: scale(1.01); }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" id="top">
+    <div class="container">
+      <h1>Website Proposal</h1>
+      <h2 class="sub">Intake form → Google Sheet</h2>
+      <p class="sub" style="margin-top: 0.75rem; font-size: 1rem; opacity: 0.9;">Evans Counseling</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro container" id="intro">
+      <h2 class="section-title">Add new Google Sheet destination to your existing form</h2>
+      <p class="section-tagline"><span class="accent">ONE-TIME SETUP</span></p>
+      <span class="divider">////////////////////////////////////</span>
+
+      <p>We can connect your existing form so each submission appends a row in a Google Sheet. The heavy lifting happens on the Google side (a small webhook endpoint). You do not need another WordPress plugin for this pattern.</p>
+      <p>Below is a single, straightforward quote for the initial engineering and testing. No new monthly fee from this work.</p>
+    </section>
+
+    <section class="container" id="pricing">
+      <span class="divider">////////////////////////////////////</span>
+      <div class="pricing-grid">
+        <div class="card recommended">
+          <span class="card-badge">QUOTE</span>
+          <h3 class="card-title">Intake → Google Sheet integration</h3>
+          <div class="card-price">$250</div>
+          <div class="card-price-note">one-time · paid before work begins</div>
+          <ul>
+            <li>Set up the Google-side webhook to receive form data and write rows to your sheet</li>
+            <li>Point your WordPress form submission to that endpoint</li>
+            <li>Test end-to-end so new submissions appear reliably</li>
+            <li>Brief handoff notes so your team knows where things live</li>
+          </ul>
+          <p class="note">Ongoing cost from this project: none. Your normal Google Workspace/storage limits apply.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="scope-notes">
+      <h2 class="section-title" style="font-size: 1.2rem;">What stays the same</h2>
+      <p style="max-width: 640px; margin-left: auto; margin-right: auto; text-align: left;">
+        Email notifications and on-site storage continue to work as they do today unless you ask to change them. This quote is scoped to adding the Google Sheet destination.
+      </p>
+    </section>
+
+    <section class="next-steps" id="next-steps">
+      <div class="container">
+        <h2 class="section-title">Next steps</h2>
+        <ol>
+          <li>Admin team confirms they want to move forward.</li>
+          <li>We send an invoice; payment confirms the scope.</li>
+          <li>You share access needed for the form and a target Google Sheet (or we create one and share it back).</li>
+          <li>We build, connect, and test until submissions land in the sheet as expected.</li>
+        </ol>
+        <p>Questions before you decide? Reply on the existing email thread—we’re happy to clarify.</p>
+        <p class="signature">— Ben and Jacqueline Meredith, WP Steward</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

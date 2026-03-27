@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposal &amp; Terms | Evans Counseling | WP Steward</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --wp-dark-blue: #2A4B8F;
+      --wp-text: #1a1a1a;
+      --wp-text-muted: #4b5563;
+      --wp-white: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 2rem 1.5rem 3rem;
+      font-family: "Open Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--wp-text);
+      background: var(--wp-white);
+      line-height: 1.65;
+    }
+    .doc { max-width: 760px; margin: 0 auto; }
+    .doc-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 2px solid var(--wp-dark-blue);
+    }
+    .doc-header h1 { margin: 0 0 0.5rem; color: var(--wp-dark-blue); font-size: 1.5rem; }
+    .doc-header p { margin: 0.15rem 0; color: var(--wp-text-muted); }
+    section { margin-bottom: 1.75rem; }
+    h2 { margin: 0 0 0.75rem; color: var(--wp-dark-blue); font-size: 1.1rem; }
+    p { margin: 0 0 0.75rem; }
+    ul { margin: 0 0 0.75rem; padding-left: 1.25rem; }
+    .scope-box {
+      background: rgba(42, 75, 143, 0.06);
+      border: 1px solid rgba(42, 75, 143, 0.25);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+    }
+    .scope-box .total {
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(42, 75, 143, 0.2);
+      color: var(--wp-dark-blue);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .terms-list { list-style: none; padding-left: 0; }
+    .terms-list li {
+      position: relative;
+      padding-left: 1.4rem;
+      margin-bottom: 0.7rem;
+    }
+    .terms-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.52rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--wp-dark-blue);
+    }
+    .invoice-cta {
+      text-align: center;
+      background: var(--wp-dark-blue);
+      border-radius: 8px;
+      padding: 1.5rem;
+      color: var(--wp-white);
+    }
+    .invoice-cta p { margin: 0 0 0.9rem; color: rgba(255, 255, 255, 0.95); }
+    .invoice-cta a {
+      display: inline-block;
+      background: var(--wp-white);
+      color: var(--wp-dark-blue);
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 6px;
+      padding: 0.75rem 1.5rem;
+    }
+    .invoice-cta .note { margin-top: 0.9rem; font-size: 0.86rem; color: rgba(255, 255, 255, 0.85); }
+  </style>
+</head>
+<body>
+  <div class="doc">
+    <header class="doc-header">
+      <h1>Proposal &amp; Terms</h1>
+      <p>Evans Counseling — Intake form → Google Sheet</p>
+      <p>WP Steward (Ben and Jacqueline Meredith)</p>
+    </header>
+
+    <section>
+      <h2>1. Scope of work</h2>
+      <p>This proposal covers a one-time integration so website intake form submissions append rows to a Google Sheet, using a Google-hosted webhook (no additional WordPress plugin required for this approach).</p>
+      <div class="scope-box">
+        <ul>
+          <li>Google Apps Script endpoint and sheet wiring</li>
+          <li>Connect the WordPress form to post to that endpoint</li>
+          <li>End-to-end testing</li>
+          <li>Short handoff documentation</li>
+        </ul>
+        <p class="total">Total due (one-time): $250</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. Terms</h2>
+      <ul class="terms-list">
+        <li><strong>Payment.</strong> Full payment is due before work begins. Payment of the invoice constitutes acceptance of this proposal and these terms.</li>
+        <li><strong>Access.</strong> Client provides timely access to the form, WordPress admin as needed, and a Google account/sheet as agreed.</li>
+        <li><strong>Ongoing fees.</strong> This quote does not add a recurring line item for the integration itself; Google and hosting costs remain whatever you already pay.</li>
+      </ul>
+    </section>
+
+    <section class="invoice-cta">
+      <p><strong>Pay the invoice to accept and schedule work.</strong></p>
+      <a href="#" target="_blank" rel="noopener">Pay invoice (add link)</a>
+      <p class="note">Replace with your FreshBooks or other payment link.</p>
+    </section>
+  </div>
+</body>
+</html>
